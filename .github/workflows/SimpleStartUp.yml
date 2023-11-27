@@ -30,3 +30,24 @@ jobs:
         run: |
             ls
             echo Hello There!
+
+      # Test checkout with remote test script
+      - name: Checkout private repo
+        uses: actions/checkout@v4
+        with:
+          repository: DanielCheahSJ/Wk7Activity_RemoteTestScript
+          token: ${{  secrets.WK7ACTIVITY_REMOTETESTSCRIPT }}
+
+      - name: List contents
+        run: |
+          ls
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - run: python test_script.py
+      - name: install plugin
+        run: |
+          pip install pytest pytest-cov
+            pytest --cov
+          

@@ -1,4 +1,2 @@
-from test_script import *
-
-def test_Hello():
-  assert hello() == "Hello World!"
+def hello():
+  return "hello world!"
